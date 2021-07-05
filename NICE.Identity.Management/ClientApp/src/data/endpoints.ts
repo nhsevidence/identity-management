@@ -9,7 +9,9 @@ export const Endpoints = {
 	servicesList: `${API_BASE_URL}/services`,
 	service: (serviceId: string | number) =>
 		`${API_BASE_URL}/services/${serviceId}`,
-	
+
+	userWithRoles: (userId: string | number) =>
+		`${API_BASE_URL}/getuserwithroles/${userId}`,
 	userRolesByWebsite: (userId: string | number, websiteId: string | number) =>
 		`${API_BASE_URL}/users/${userId}/rolesbywebsite/${websiteId}`,
 

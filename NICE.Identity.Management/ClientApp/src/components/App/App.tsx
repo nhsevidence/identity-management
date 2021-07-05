@@ -6,6 +6,7 @@ import { Header, Footer, IdamProviderProps } from "@nice-digital/global-nav";
 import { UsersList } from "../../views/UsersList/UsersList";
 import { User } from "./../../views/User/User";
 import { DeleteUser } from "./../../views/DeleteUser/DeleteUser";
+import { ExistingRoles } from "./../../views/ExistingRoles/ExistingRoles";
 import { SelectService } from "./../../views/SelectService/SelectService";
 import { SelectEnvironment } from "./../../views/SelectEnvironment/SelectEnvironment";
 import { SelectRoles } from "./../../views/SelectRoles/SelectRoles";
@@ -33,6 +34,7 @@ export class App extends React.Component {
 					<Route path="/users" exact component={UsersList} />
 					<Route path="/users/:id" exact component={User} />
 					<Route path="/users/:id/delete" exact component={DeleteUser} />
+					<Route path="/users/:id/roles" exact component={ExistingRoles} />
 					<Route path="/users/:id/services" exact component={SelectService} />
 					<Route
 						path="/users/:id/services/:serviceId/environments"

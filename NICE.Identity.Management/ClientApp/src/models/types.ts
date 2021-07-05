@@ -15,10 +15,9 @@ export type UserType = {
 	isStaffMember: boolean;
 };
 
-export type ServiceType = {
+export type EnvironmentType = {
 	id: number;
 	name: string;
-	websites: Array<ServiceWebsiteType>;
 };
 
 export type ServiceWebsiteType = {
@@ -27,21 +26,19 @@ export type ServiceWebsiteType = {
 	environment: EnvironmentType;
 };
 
-export type UserRoleType = {
-	userId: number;
-	websites: Array<WebsiteType>;
+export type ServiceType = {
+	id: number;
+	name: string;
+	websites: Array<ServiceWebsiteType>;
 };
 
 export type WebsiteType = {
 	id: number;
+	service: ServiceType;
 	serviceId: number;
 	host: string;
 	environment: EnvironmentType;
-};
-
-export type EnvironmentType = {
-	id: number;
-	name: string;
+	environmentId: number;
 };
 
 export type RoleType = {
@@ -49,6 +46,23 @@ export type RoleType = {
 	name: string;
 	description: string;
 	hasRole: boolean;
+};
+
+export type UserRoleType = {
+	id: number;
+	website: WebsiteType;
+	websiteId: number;
+	name: string;
+	description: string;
+};
+
+export type UserWithRolesType = {
+	id: number;
+	firstName: string;
+	lastName: string;
+	roleId: number;
+	userId: number;
+	role: UserRoleType;
 };
 
 export type HistoryLocationType = {

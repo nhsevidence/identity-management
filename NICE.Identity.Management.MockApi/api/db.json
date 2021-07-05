@@ -13,7 +13,8 @@
       "lastLoggedInDate": "2019-02-25T01:29:54.911Z",
       "isStaffMember": false,
       "acceptedTerms": true,
-      "isMigrated": false
+      "isMigrated": false,
+      "isInAuthenticationProvider": true
     },
     {
       "userId": 2,
@@ -28,7 +29,8 @@
       "lastLoggedInDate": "2019-10-24T12:29:54.911Z",
       "isStaffMember": false,
       "acceptedTerms": true,
-      "isMigrated": false
+      "isMigrated": false,
+      "isInAuthenticationProvider": true
     },
     {
       "userId": 3,
@@ -43,7 +45,8 @@
       "lastLoggedInDate": "2019-10-25T12:29:54.911Z",
       "isStaffMember": false,
       "acceptedTerms": true,
-      "isMigrated": false
+      "isMigrated": false,
+      "isInAuthenticationProvider": true
     },
     {
       "userId": 4,
@@ -58,7 +61,8 @@
       "lastLoggedInDate": null,
       "isStaffMember": false,
       "acceptedTerms": true,
-      "isMigrated": false
+      "isMigrated": false,
+      "isInAuthenticationProvider": true
     },
     {
       "userId": 5,
@@ -73,7 +77,8 @@
       "lastLoggedInDate": "2019-10-27T12:29:54.911Z",
       "isStaffMember": false,
       "acceptedTerms": true,
-      "isMigrated": false
+      "isMigrated": false,
+      "isInAuthenticationProvider": true
     },
     {
       "userId": 6,
@@ -88,7 +93,8 @@
       "lastLoggedInDate": "2019-10-27T12:29:54.911Z",
       "isStaffMember": false,
       "acceptedTerms": true,
-      "isMigrated": false
+      "isMigrated": false,
+      "isInAuthenticationProvider": true
     }
   ],
   "services": [
@@ -152,7 +158,7 @@
       }
     }
   ],
-  "userroles": [
+  "userwebsiteroles": [
     {
       "id": 1,
       "user": 1,
@@ -315,6 +321,347 @@
       "type": "http://identity.nice.org.uk/claims/role",
       "value": "Administrator",
       "issuer": "idam"
+    }
+  ],
+  "getuserwithroles": [
+    {
+      "userRoles": [
+        {
+          "id": 623,
+          "roleId": 58,
+          "userId": 1653,
+          "role": {
+            "id": 58,
+            "websiteId": 16,
+            "name": "Administrator",
+            "description": "The administrator is the super user of the website, with full access to everything",
+            "website": {
+              "id": 16,
+              "serviceId": 12,
+              "environmentId": 3,
+              "host": "test.nice.org.uk",
+              "environment": {
+                "id": 3,
+                "name": "Test",
+                "order": 0
+              },
+              "service": {
+                "id": 12,
+                "name": "Consultation Comments",
+                "websites": [
+                  {
+                    "id": 16,
+                    "serviceId": 12,
+                    "environmentId": 3,
+                    "host": "test.nice.org.uk",
+                    "environment": {
+                      "id": 3,
+                      "name": "Test",
+                      "order": 0
+                    },
+                    "service": null
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": 624,
+          "roleId": 63,
+          "userId": 1653,
+          "role": {
+            "id": 63,
+            "websiteId": 16,
+            "name": "IndevUser",
+            "description": "The IndevUser role has access to the download page and question administration",
+            "website": {
+              "id": 16,
+              "serviceId": 12,
+              "environmentId": 3,
+              "host": "test.nice.org.uk",
+              "environment": {
+                "id": 3,
+                "name": "Test",
+                "order": 0
+              },
+              "service": {
+                "id": 12,
+                "name": "Consultation Comments",
+                "websites": [
+                  {
+                    "id": 16,
+                    "serviceId": 12,
+                    "environmentId": 3,
+                    "host": "test.nice.org.uk",
+                    "environment": {
+                      "id": 3,
+                      "name": "Test",
+                      "order": 0
+                    },
+                    "service": null
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": 625,
+          "roleId": 60,
+          "userId": 1653,
+          "role": {
+            "id": 60,
+            "websiteId": 16,
+            "name": "CHTETeam",
+            "description": "The CHTE team user has access to the download page and can download comments and answers",
+            "website": {
+              "id": 16,
+              "serviceId": 12,
+              "environmentId": 3,
+              "host": "test.nice.org.uk",
+              "environment": {
+                "id": 3,
+                "name": "Test",
+                "order": 0
+              },
+              "service": {
+                "id": 12,
+                "name": "Consultation Comments",
+                "websites": [
+                  {
+                    "id": 16,
+                    "serviceId": 12,
+                    "environmentId": 3,
+                    "host": "test.nice.org.uk",
+                    "environment": {
+                      "id": 3,
+                      "name": "Test",
+                      "order": 0
+                    },
+                    "service": null
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": 626,
+          "roleId": 61,
+          "userId": 1653,
+          "role": {
+            "id": 61,
+            "websiteId": 16,
+            "name": "CfGTeam",
+            "description": "The CfG team user has access to the download page and can download comments and answers",
+            "website": {
+              "id": 16,
+              "serviceId": 12,
+              "environmentId": 3,
+              "host": "test.nice.org.uk",
+              "environment": {
+                "id": 3,
+                "name": "Test",
+                "order": 0
+              },
+              "service": {
+                "id": 12,
+                "name": "Consultation Comments",
+                "websites": [
+                  {
+                    "id": 16,
+                    "serviceId": 12,
+                    "environmentId": 3,
+                    "host": "test.nice.org.uk",
+                    "environment": {
+                      "id": 3,
+                      "name": "Test",
+                      "order": 0
+                    },
+                    "service": null
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": 627,
+          "roleId": 62,
+          "userId": 1653,
+          "role": {
+            "id": 62,
+            "websiteId": 16,
+            "name": "HSCTeam",
+            "description": "The HSC team user has access to the download page and can download comments and answers",
+            "website": {
+              "id": 16,
+              "serviceId": 12,
+              "environmentId": 3,
+              "host": "test.nice.org.uk",
+              "environment": {
+                "id": 3,
+                "name": "Test",
+                "order": 0
+              },
+              "service": {
+                "id": 12,
+                "name": "Consultation Comments",
+                "websites": [
+                  {
+                    "id": 16,
+                    "serviceId": 12,
+                    "environmentId": 3,
+                    "host": "test.nice.org.uk",
+                    "environment": {
+                      "id": 3,
+                      "name": "Test",
+                      "order": 0
+                    },
+                    "service": null
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": 628,
+          "roleId": 59,
+          "userId": 1653,
+          "role": {
+            "id": 59,
+            "websiteId": 16,
+            "name": "CommentAdminTeam",
+            "description": "The comment admin team user has access to the comments download page and question administration",
+            "website": {
+              "id": 16,
+              "serviceId": 12,
+              "environmentId": 3,
+              "host": "test.nice.org.uk",
+              "environment": {
+                "id": 3,
+                "name": "Test",
+                "order": 0
+              },
+              "service": {
+                "id": 12,
+                "name": "Consultation Comments",
+                "websites": [
+                  {
+                    "id": 16,
+                    "serviceId": 12,
+                    "environmentId": 3,
+                    "host": "test.nice.org.uk",
+                    "environment": {
+                      "id": 3,
+                      "name": "Test",
+                      "order": 0
+                    },
+                    "service": null
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": 681,
+          "roleId": 56,
+          "userId": 1653,
+          "role": {
+            "id": 56,
+            "websiteId": 14,
+            "name": "User:Administration",
+            "description": "This role is required in order to access other users data in idam",
+            "website": {
+              "id": 14,
+              "serviceId": 10,
+              "environmentId": 3,
+              "host": "test-identityapi.nice.org.uk",
+              "environment": {
+                "id": 3,
+                "name": "Test",
+                "order": 0
+              },
+              "service": {
+                "id": 10,
+                "name": "Identity API",
+                "websites": [
+                  {
+                    "id": 14,
+                    "serviceId": 10,
+                    "environmentId": 3,
+                    "host": "test-identityapi.nice.org.uk",
+                    "environment": {
+                      "id": 3,
+                      "name": "Test",
+                      "order": 0
+                    },
+                    "service": null
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": 682,
+          "roleId": 57,
+          "userId": 1653,
+          "role": {
+            "id": 57,
+            "websiteId": 15,
+            "name": "Administrator",
+            "description": "This user has full access and unrestricted access.",
+            "website": {
+              "id": 15,
+              "serviceId": 11,
+              "environmentId": 3,
+              "host": "test-identityadmin.nice.org.uk",
+              "environment": {
+                "id": 3,
+                "name": "Test",
+                "order": 0
+              },
+              "service": {
+                "id": 11,
+                "name": "Identity Admin",
+                "websites": [
+                  {
+                    "id": 15,
+                    "serviceId": 11,
+                    "environmentId": 3,
+                    "host": "test-identityadmin.nice.org.uk",
+                    "environment": {
+                      "id": 3,
+                      "name": "Test",
+                      "order": 0
+                    },
+                    "service": null
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "id": 1,
+      "userId": 1,
+      "nameIdentifier": "auth0|abc12345-2f95-43e7-b419-18f2784f1111",
+      "firstName": "Kristin",
+      "lastName": "Patrick",
+      "emailAddress": "kristin.patrick@example.com",
+      "allowContactMe": true,
+      "hasVerifiedEmailAddress": true,
+      "isLockedOut": false,
+      "initialRegistrationDate": "2019-10-23T12:29:54.911Z",
+      "lastLoggedInDate": "2019-10-23T12:29:54.911Z",
+      "isStaffMember": false,
+      "acceptedTerms": true,
+      "isMigrated": false,
+      "isInAuthenticationProvider": true
     }
   ],
   "verificationemail": [

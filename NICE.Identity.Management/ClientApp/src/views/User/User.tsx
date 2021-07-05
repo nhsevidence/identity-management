@@ -62,13 +62,12 @@ export class User extends Component<UserProps, UserState> {
 		}
 
 		this.setState({ user, isLoading: false });
-		document.title = `NICE Accounts - ${user.firstName} ${user.lastName}`
+		document.title = `NICE Accounts - ${user.firstName} ${user.lastName}`;
 	}
 
 	render() {
 		const { user, error, redirect, isLoading } = this.state;
 		const showResendVerificationButton = !user.hasVerifiedEmailAddress;
-
 
 		if (redirect) {
 			return <Redirect to="/users" />;
@@ -106,15 +105,26 @@ export class User extends Component<UserProps, UserState> {
 									: `${user.firstName} ${user.lastName}`
 							}
 							cta={
-								<Button
-									data-qa-sel="add-user-role-button"
-									variant="cta"
-									to={`/users/${this.props.match.params.id}/services`}
-									elementType={Link}
-									disabled={isLoading}
-								>
-									{isLoading ? "Loading..." : "Add role"}
-								</Button>
+								<>
+									<Button
+										data-qa-sel="add-user-role-button"
+										variant="cta"
+										to={`/users/${this.props.match.params.id}/services`}
+										elementType={Link}
+										disabled={isLoading}
+									>
+										{isLoading ? "Loading..." : "Add role"}
+									</Button>
+									<Button
+										data-qa-sel="see-user-roles-button"
+										variant="secondary"
+										to={`/users/${user.userId}/roles`}
+										elementType={Link}
+										disabled={isLoading}
+									>
+										{isLoading ? "Loading..." : "See existing roles"}
+									</Button>
+								</>
 							}
 						/>
 						<Grid>
@@ -131,12 +141,12 @@ export class User extends Component<UserProps, UserState> {
 												<div>
 													<UserStatus user={user} />
 												</div>
-												{ showResendVerificationButton &&
+												{showResendVerificationButton && (
 													<ResendVerification
 														nameIdentifier={user.nameIdentifier}
 														onError={this.handleError}
 													/>
-												}
+												)}
 
 												<UnlockUser
 													id={user.userId}
@@ -191,7 +201,7 @@ export class User extends Component<UserProps, UserState> {
 												{user.isMigrated ? "Yes" : "No"}
 											</span>
 										</div>
-										
+
 										<div className={`${styles.summaryList} pv--c mb--d`}>
 											<span className={styles.summaryListLabel}>
 												Is in Authentication Provider (Auth0)

@@ -20,7 +20,7 @@ const rewriter = jsonServer.rewriter({
   '/users\\?sort=:field\\:-1': '/users?_sort=:field&_order=desc',
   '/services': '/services?_embed=websites',
   '/services/:id': '/services/:id?_embed=websites',
-  '/users/:userId/rolesbywebsite/:websiteId': '/userroles?user=:userId&websiteId=:websiteId&_expand=service&_expand=website',
+  '/users/:userId/rolesbywebsite/:websiteId': '/userwebsiteroles?user=:userId&websiteId=:websiteId&_expand=service&_expand=website',
   '/claims/:authenticationProviderUserId': '/claims',
   '/verificationemail/verificationemail': '/verificationemail'
 });
@@ -47,7 +47,7 @@ server.use((req, res, next) => {
 
 router.render = (req, res) => {
   let requestUrl = url.parse(req.url);
-  if (requestUrl.path.includes('userroles')){
+  if (requestUrl.path.includes('userwebsiteroles')){
     if (req.method === "GET" && res.locals.data[0]){
       res.jsonp(res.locals.data[0]);
     }else if(req.method === "PATCH") {

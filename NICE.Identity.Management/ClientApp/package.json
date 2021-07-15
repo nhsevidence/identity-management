@@ -5,7 +5,6 @@
   "dependencies": {
     "@nice-digital/design-system": "^1.2.14-alpha.0",
     "@nice-digital/global-nav": "github:nice-digital/global-nav",
-    "@nice-digital/nds-checkbox": "^1.0.13-alpha.0",
     "@nice-digital/nds-radio": "^1.0.17-alpha.0",
     "@nice-digital/nds-stacked-nav": "^1.0.27-alpha.0",
     "concurrently": "^6.2.0",

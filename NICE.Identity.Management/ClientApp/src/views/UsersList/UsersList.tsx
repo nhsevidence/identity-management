@@ -18,6 +18,7 @@ import { Endpoints } from "../../data/endpoints";
 import { UserType, HistoryType } from "../../models/types";
 import { FilterSearch } from "../../components/FilterSearch/FilterSearch";
 import { FilterStatus } from "../../components/FilterStatus/FilterStatus";
+import { FilterService } from "../../components/FilterService/FilterService";
 import { UserStatus } from "../../components/UserStatus/UserStatus";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { Pagination } from "../../components/Pagination/Pagination";
@@ -50,6 +51,7 @@ type UsersListState = {
 	error?: Error;
 	isLoading: boolean;
 	statusFilter?: string;
+	serviceFilter: Array<number>;
 	pageNumber: number;
 	itemsPerPage: number | string;
 };
@@ -83,6 +85,7 @@ export class UsersList extends Component<UsersListProps, UsersListState> {
 			originalUsers: [],
 			users: [],
 			isLoading: true,
+			serviceFilter: [],
 			pageNumber: pageNumber,
 			itemsPerPage: itemsPerPage,
 		};
@@ -146,6 +149,37 @@ export class UsersList extends Component<UsersListProps, UsersListState> {
 		this.setState({ users, statusFilter, pageNumber, isLoading: false });
 	};
 
+	filterUsersByService = (e: React.ChangeEvent<HTMLInputElement>) => {
+		this.setState({ isLoading: true });
+
+		const serviceId = parseInt(e.target.value);
+
+		let serviceFilter = this.state.serviceFilter;
+
+		serviceFilter = serviceFilter.includes(serviceId)
+			? serviceFilter.filter((value) => value !== serviceId)
+			: serviceFilter.concat(serviceId);
+
+		const itemsPerPage = Number(this.state.itemsPerPage)
+			? Number(this.state.itemsPerPage)
+			: this.state.itemsPerPage;
+
+		let users = this.state.originalUsers;
+		let pageNumber = this.state.pageNumber;
+
+		if (serviceFilter.length) {
+			users = this.usersByService(serviceFilter, users);
+		}
+
+		pageNumber = this.pastPageRange(
+			itemsPerPage,
+			pageNumber,
+			this.state.users.length,
+		);
+
+		this.setState({ users, serviceFilter, pageNumber, isLoading: false });
+	};
+
 	filterUsersBySearch = async (searchQuery: string): Promise<void> => {
 		this.setState({ isLoading: true });
 
@@ -168,6 +202,10 @@ export class UsersList extends Component<UsersListProps, UsersListState> {
 			users = this.usersByStatus(this.state.statusFilter, users);
 		}
 
+		if (this.state.serviceFilter) {
+			users = this.usersByService(this.state.serviceFilter, users);
+		}
+
 		pageNumber = this.pastPageRange(
 			itemsPerPage,
 			pageNumber,
@@ -181,6 +219,19 @@ export class UsersList extends Component<UsersListProps, UsersListState> {
 			pageNumber,
 			isLoading: false,
 		});
+	};
+
+	usersByService = (
+		serviceFilter: Array<number>,
+		users: Array<UserType>,
+	): Array<UserType> => {
+		return (users = users.filter((user) => {
+			let userServices = user.hasAccessToServiceIds;
+
+			if (userServices.some((r) => serviceFilter.indexOf(r) >= 0)) {
+				return user;
+			}
+		}));
 	};
 
 	usersByStatus = (
@@ -298,6 +349,29 @@ export class UsersList extends Component<UsersListProps, UsersListState> {
 			? users.slice(paginationPositions.start, paginationPositions.finish)
 			: users;
 
+		const dummyServices = [
+			{
+				name: "dev-eppi.nice.org.uk",
+				id: 1,
+			},
+			{
+				name: "test-eppi.nice.org.uk",
+				id: 2,
+			},
+			{
+				name: "dev-comments.nice.org.uk",
+				id: 3,
+			},
+			{
+				name: "alpha-comments.nice.org.uk",
+				id: 4,
+			},
+			{
+				name: "idam",
+				id: 5,
+			},
+		];
+
 		return (
 			<>
 				<Breadcrumbs>
@@ -314,6 +388,10 @@ export class UsersList extends Component<UsersListProps, UsersListState> {
 						<GridItem cols={12} md={3}>
 							<FilterSearch onInputChange={this.filterUsersBySearch} />
 							<FilterStatus onCheckboxChange={this.filterUsersByStatus} />
+							<FilterService
+								onCheckboxChange={this.filterUsersByService}
+								services={dummyServices}
+							/>
 						</GridItem>
 						<GridItem cols={12} md={9} aria-busy={!users.length}>
 							{isLoading ? (
